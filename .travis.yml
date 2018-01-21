@@ -12,7 +12,8 @@ before_script:
   - cp .env.example .env
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
+  - php artisan key:generate
 
 script:
-  - vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpunit
   - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
