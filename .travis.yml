@@ -4,11 +4,13 @@ os:
 language: php
 
 php:
-  - '7.2'
+#  - 7.0
+#  - 7.1
+  - 7.2
 
 before_script:
 
-  - cp .env.example .env
+  - cp .env.testing .env
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction --dev
   - chmod -R 777 storage
