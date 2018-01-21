@@ -7,13 +7,24 @@ php:
   - '7.2'
 
 before_script:
-  - composer self-update
-  - composer install --no-interaction
-  - cp .env.example .env
-  - phpenv rehash
-  - php artisan key:generate
 
+  - cp .env.example .env
+  - travis_retry composer self-update
+  - travis_retry composer install --prefer-source --no-interaction --dev
+  - chmod -R 777 storage
+  - mysql -e 'create database motor;'
+  - php artisan key:generate
+  - php artisan migrate:install --no-interaction -vvv
 script:
+  - php artisan migrate --no-interaction -vvv
   - vendor/bin/phpcs ./app/ --standard=PSR2
   - vendor/bin/phpmd ./app/ text codesize,unusedcode
   - vendor/bin/codecept run functional
+
+after_script:
+  - ls -laR app/storage
+  - cat app/storage/logs/*
+
+notifications:
+  email:
+    - ovcharenkovv+travis@gmail.com
