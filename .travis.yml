@@ -16,4 +16,4 @@ before_script:
 script:
   - vendor/bin/phpcs ./app/ --standard=PSR2
   - vendor/bin/phpmd ./app/ text codesize,unusedcode
-  - ./vendor/bin/codecept run tests/functional/
+  - ./vendor/bin/codecept run ./tests/functional/
