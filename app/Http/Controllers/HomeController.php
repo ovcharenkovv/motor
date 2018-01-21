@@ -16,8 +16,8 @@ class HomeController extends Controller
         $result = '';
 
         $crawler->filter('.prname2')->each(
-            function ($node, $result) {
-                $result .= $node->text() . "\n";
+            function ($node) {
+                print $node->text() . "</br>";
             }
         );
 

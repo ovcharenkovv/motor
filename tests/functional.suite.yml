@@ -8,6 +8,8 @@
 actor: FunctionalTester
 modules:
     enabled:
+        - Asserts
+        - Mockery
         - Laravel5:
             environment_file: .env.testing
         - \Helper\Functional
