@@ -3,17 +3,10 @@
 
 class HomeControllerCest
 {
-    public function _before(FunctionalTester $I)
-    {
-    }
-
-    public function _after(FunctionalTester $I)
-    {
-    }
-
-    // tests
     public function tryTest(FunctionalTester $I)
     {
-        $I->assertFalse(false);
+        $I->amOnRoute('home');
+        $I->seeResponseCodeIs(200);
+        $I->see('Hello world');
     }
 }
