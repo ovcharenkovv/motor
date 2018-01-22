@@ -7,13 +7,13 @@ php:
   - 7.2
 
 before_script:
-
-  - cp .env.example .env
+- cp .env.example .env
   - cp .env.example .env.testing
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction --dev
   - chmod -R 777 storage
   - mysql -e 'create database motor;'
+  - phpenv rehash
   - php artisan key:generate
   - php artisan migrate:install
 script:
