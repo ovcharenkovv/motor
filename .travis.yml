@@ -17,9 +17,9 @@ before_script:
   - php artisan key:generate
   - php artisan migrate:install
 script:
-  - php artisan migrate
   - vendor/bin/phpcs ./app/ --standard=PSR2
   - vendor/bin/phpmd ./app/ text codesize,unusedcode
+  - php artisan migrate
   - vendor/bin/codecept run functional
 
 after_script:
