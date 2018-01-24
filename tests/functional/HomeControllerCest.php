@@ -7,6 +7,6 @@ class HomeControllerCest
     {
         $I->amOnRoute('home');
         $I->seeResponseCodeIs(200);
-        $I->see('Hello world');
+        $I->see('Hello world !!!');
     }
 }
