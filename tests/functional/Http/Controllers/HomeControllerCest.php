@@ -1,5 +1,7 @@
 <?php
+namespace Http\Controllers;
 
+use FunctionalTester;
 
 class HomeControllerCest
 {
