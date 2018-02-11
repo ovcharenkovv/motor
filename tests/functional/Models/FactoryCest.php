@@ -9,4 +9,9 @@ class FactoryCest
     {
         $I->assertInstanceOf(\App\Models\Channel::class, $I->makeChannel());
     }
+
+    public function testCreateProgremme(Tester $I)
+    {
+        $I->assertInstanceOf(\App\Models\Programme::class, $I->makeProgramme());
+    }
 }

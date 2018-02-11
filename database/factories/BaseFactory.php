@@ -15,7 +15,21 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Channel::class, function (Faker $faker) {
     return [
-        'display_name' => $faker->name,
+        'display_name' => $faker->word,
         'icon_src' => $faker->url,
+    ];
+});
+
+$factory->define(App\Models\Programme::class, function (Faker $faker) {
+
+    $channel = factory(App\Models\Channel::class)->create();
+
+    return [
+        'channel_id' => $channel->id,
+        'start' => $faker->dateTime(),
+        'stop' => $faker->dateTime(),
+        'title' => $faker->word,
+        'descr' => $faker->word,
+        'date' => $faker->date(),
     ];
 });
