@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Parser\Vsetv\Extractor;
+namespace App\Vsetv\Parser;
 
 class Time
 {
     private $zero;
 
-    function __construct($zero)
+    /**
+     * @param $zero
+     */
+    public function __construct($zero)
     {
         $this->zero = $zero;
     }

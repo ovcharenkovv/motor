@@ -1,7 +1,7 @@
 <?php
 namespace Parse;
 
-use App\Parser\Vsetv\Extractor\Time;
+use App\Vsetv\Parser\Time;
 use FunctionalTester as Tester;
 
 class TimeCest
