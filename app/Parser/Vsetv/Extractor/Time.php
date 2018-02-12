@@ -36,7 +36,9 @@ class Time
      */
     private function getFirst($string)
     {
-        return $string{0} != '<' ? $string{0} : ((substr($string, 15, 2) == $this->zero) ? '0' : '5');
+        return $string{0} != '<' ?
+            $string{0} :
+            ((substr($string, 15, 2) == $this->zero) ? '0' : '5');
     }
 
     /**
@@ -45,6 +47,8 @@ class Time
      */
     private function getSecond($string)
     {
-        return $string{strlen($string) - 1} != '>' ? $string{strlen($string) - 1} : ((substr($string, -8, 2) == $this->zero) ? '0' : '5');
+        return $string{strlen($string) - 1} != '>' ?
+            $string{strlen($string) - 1} :
+            ((substr($string, -8, 2) == $this->zero) ? '0' : '5');
     }
 }
