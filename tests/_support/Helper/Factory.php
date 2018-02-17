@@ -4,9 +4,6 @@ namespace Helper;
 // here you can define custom actions
 // all public methods declared in helper class will be available in $I
 
-use App\Models\Channel;
-use App\Models\Programme;
-
 class Factory extends \Codeception\Module
 {
     /**
@@ -15,7 +12,7 @@ class Factory extends \Codeception\Module
      */
     public function makeChannel(array $attributes = [])
     {
-        return factory(Channel::class)->create($attributes);
+        return factory(\App\Models\Channel::class)->create($attributes);
     }
 
     /**
@@ -24,6 +21,15 @@ class Factory extends \Codeception\Module
      */
     public function makeProgramme(array $attributes = [])
     {
-        return factory(Programme::class)->create($attributes);
+        return factory(\App\Models\Programme::class)->create($attributes);
+    }
+
+    /**
+     * @param array $attributes
+     * @return mixed
+     */
+    public function makeScrapChannel(array $attributes = [])
+    {
+        return factory(\App\Models\ScrapChannel::class)->create($attributes);
     }
 }

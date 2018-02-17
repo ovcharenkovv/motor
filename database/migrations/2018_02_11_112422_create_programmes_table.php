@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProgrammes extends Migration
+class CreateProgrammesTable extends Migration
 {
     /**
      * Run the migrations.

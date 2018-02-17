@@ -14,4 +14,9 @@ class FactoryCest
     {
         $I->assertInstanceOf(\App\Models\Programme::class, $I->makeProgramme());
     }
+
+    public function testCreateScrapChannel(Tester $I)
+    {
+        $I->assertInstanceOf(\App\Models\ScrapChannel::class, $I->makeScrapChannel());
+    }
 }

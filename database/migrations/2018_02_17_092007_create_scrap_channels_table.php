@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddChannels extends Migration
+class CreateScrapChannelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddChannels extends Migration
      */
     public function up()
     {
-        Schema::create('channels', function (Blueprint $table) {
+        Schema::create('scrap_channels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('display_name');
-            $table->string('icon_src');
+            $table->string('url');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class AddChannels extends Migration
      */
     public function down()
     {
-        Schema::drop('channel');
+        Schema::dropIfExists('scrap_channels');
     }
 }

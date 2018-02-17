@@ -33,3 +33,10 @@ $factory->define(App\Models\Programme::class, function (Faker $faker) {
         'date' => $faker->date(),
     ];
 });
+
+$factory->define(App\Models\ScrapChannel::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+        'url' => $faker->url,
+    ];
+});
