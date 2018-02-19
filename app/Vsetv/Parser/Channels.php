@@ -16,7 +16,7 @@ class Channels
      * @param Crawler $crawler
      * @param $html
      */
-    public function __construct(Crawler $crawler, $html)
+    public function __construct(Crawler $crawler, string $html)
     {
         $crawler->addHtmlContent($html);
 
@@ -28,7 +28,7 @@ class Channels
     /**
      * @return mixed
      */
-    public function get()
+    public function get(): array
     {
         return $this->channels;
     }

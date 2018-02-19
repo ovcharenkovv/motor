@@ -9,7 +9,7 @@ class Time
     /**
      * @param $zero
      */
-    public function __construct($zero)
+    public function __construct(string $zero)
     {
         $this->zero = $zero;
     }
@@ -18,7 +18,7 @@ class Time
      * @param $string
      * @return string
      */
-    public function parse($string)
+    public function parse(string $string): string
     {
         $pieces = explode(":", $string);
         return $this->extract(trim($pieces[0])) . ':' . $this->extract(trim($pieces[1]));
@@ -28,7 +28,7 @@ class Time
      * @param $string
      * @return string
      */
-    private function extract($string)
+    private function extract(string $string): string
     {
         return $this->getFirst($string) . $this->getSecond($string);
     }
@@ -37,7 +37,7 @@ class Time
      * @param $string
      * @return string
      */
-    private function getFirst($string)
+    private function getFirst(string $string): string
     {
         return $string{0} != '<' ?
             $string{0} :
@@ -48,7 +48,7 @@ class Time
      * @param $string
      * @return string
      */
-    private function getSecond($string)
+    private function getSecond(string $string): string
     {
         return $string{strlen($string) - 1} != '>' ?
             $string{strlen($string) - 1} :
