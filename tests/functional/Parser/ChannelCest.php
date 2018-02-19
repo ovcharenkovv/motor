@@ -1,5 +1,5 @@
 <?php
-namespace Parse;
+namespace Parser;
 
 use App\Vsetv\Parser\Channels;
 use FunctionalTester as Tester;

@@ -1,5 +1,5 @@
 <?php
-namespace Parse;
+namespace Parser;
 
 use App\Vsetv\Parser\Time;
 use FunctionalTester as Tester;
