@@ -16,4 +16,14 @@ class ChannelCest
             (new Channels(new Crawler(), $html))->get()
         );
     }
+
+    public function testExtractChannelNameAndIdForEmptyString(Tester $I)
+    {
+        $html = '';
+
+        $I->assertEquals(
+            [],
+            (new Channels(new Crawler(), $html))->get()
+        );
+    }
 }
