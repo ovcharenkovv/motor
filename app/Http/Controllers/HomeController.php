@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ScrapChannel;
-use Illuminate\Contracts\Cache\Repository as CacheManager;
 
 class HomeController extends Controller
 {
 
-    public function index(CacheManager $cache)
+    public function index()
     {
         echo "<pre>";
         print_r(ScrapChannel::all()->toArray());
