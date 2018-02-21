@@ -17,7 +17,7 @@ class ChannelsCest
     }
 
 
-    public function testSomething(Tester $I)
+    public function testsScrapChannels(Tester $I)
     {
         $expected = '<body><p>string</p></body>';
 

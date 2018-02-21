@@ -12,7 +12,7 @@ class ChannelCest
         $html = '<select name="selected_channel"><option value="val">text</option></select>';
 
         $I->assertEquals(
-            [["val" => "text"]],
+            ["val" => "text"],
             (new Channels(new Crawler(), $html))->get()
         );
     }

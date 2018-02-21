@@ -21,7 +21,7 @@ class Channels
         $crawler->addHtmlContent($html);
 
         $crawler->filterXPath("//select[@name='selected_channel']/option")->each(function ($node) {
-            array_push($this->channels, [current($node->extract('value')) => current($node->extract('_text'))]);
+            $this->channels[current($node->extract('value'))] = current($node->extract('_text'));
         });
     }
 

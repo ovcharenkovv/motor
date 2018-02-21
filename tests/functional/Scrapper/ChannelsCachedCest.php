@@ -19,7 +19,7 @@ class ChannelsCachedCest
     }
 
 
-    public function testSomething(Tester $I)
+    public function testGetChannelsFromCache(Tester $I)
     {
         $expected = '<body><p>string</p></body>';
         $channels = m::mock(Channels::class);
