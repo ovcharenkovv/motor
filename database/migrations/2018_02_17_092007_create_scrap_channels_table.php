@@ -17,7 +17,7 @@ class CreateScrapChannelsTable extends Migration
             $table->increments('id');
             $table->string('url');
             $table->string('name');
-            $table->timestamps();
+            $table->dateTime('parsed_at')->nullable();
         });
     }
 

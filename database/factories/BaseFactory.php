@@ -38,5 +38,6 @@ $factory->define(App\Models\ScrapChannel::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
         'url' => $faker->url,
+        'parsed_at' => $faker->dateTime
     ];
 });
