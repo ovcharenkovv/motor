@@ -7,11 +7,12 @@ if (!function_exists('strpos_arr')) {
      * @param $needle
      * @return bool|int
      */
-    function strpos_arr($haystack, $needle)
+    function strpos_arr($haystack, array $needle)
     {
-        if (!is_array($needle)) $needle = array($needle);
         foreach ($needle as $what) {
-            if (($pos = strpos($haystack, $what)) !== false) return $pos;
+            if (($pos = strpos($haystack, $what)) !== false) {
+                return $pos;
+            }
         }
         return false;
     }
