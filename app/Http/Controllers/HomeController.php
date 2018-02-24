@@ -9,8 +9,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        echo "<pre>";
-        print_r(ScrapChannel::all()->toArray());
+//        echo "<pre>";
+//        print_r(ScrapChannel::all()->toArray());
 
         return 'Hello world !!!';
     }
