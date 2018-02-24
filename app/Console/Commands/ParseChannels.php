@@ -51,9 +51,7 @@ class ParseChannels extends Command
 
 
     /**
-     * Execute the console command.
-     *
-     * @return mixed
+     * @throws \Exception
      */
     public function handle()
     {
@@ -61,7 +59,7 @@ class ParseChannels extends Command
         $channels = (new ChannelsParser($this->crawler, $html))->get();
 
         (new ScrapChannel())->saveChannels($channels);
-
-//        dd($channels);
+        (new ScrapChannel())->cleanCopies();
+        $this->info('Channel list has been parsed');
     }
 }
