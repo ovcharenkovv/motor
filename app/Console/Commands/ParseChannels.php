@@ -3,9 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\ScrapChannel;
+use App\Services\Scrapper;
 use App\Vsetv\Parser\Channels as ChannelsParser;
-use App\Vsetv\Scrapper\Channels as ChannelsScrapper;
-use App\Vsetv\Scrapper\ChannelsCached as ChannelScrapperCached;
 use Illuminate\Console\Command;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -25,27 +24,26 @@ class ParseChannels extends Command
      */
     protected $description = 'Parse Channels';
     /**
-     * @var ChannelsScrapper
-     */
-    private $channelsScrapper;
-    /**
      * @var Crawler
      */
     private $crawler;
+    /**
+     * @var Scrapper
+     */
+    private $scrapper;
 
 
     /**
      * Create a new command instance.
      *
      * ParseChannels constructor.
-     * @param ChannelsScrapper $channelsScrapper
+     * @param Scrapper $scrapper
      * @param Crawler $crawler
      */
-    public function __construct(ChannelsScrapper $channelsScrapper, Crawler $crawler)
+    public function __construct(Scrapper $scrapper, Crawler $crawler)
     {
         parent::__construct();
-
-        $this->channelsScrapper = $channelsScrapper;
+        $this->scrapper = $scrapper;
         $this->crawler = $crawler;
     }
 
@@ -55,7 +53,7 @@ class ParseChannels extends Command
      */
     public function handle()
     {
-        $html = new ChannelScrapperCached($this->channelsScrapper);
+        $html = $this->scrapper->do('http://www.vsetv.com/channels.html');
         $channels = (new ChannelsParser($this->crawler, $html))->get();
 
         (new ScrapChannel())->saveChannels($channels);
