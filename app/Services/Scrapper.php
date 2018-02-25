@@ -30,6 +30,27 @@ class Scrapper
         $this->client = $client;
     }
 
+    /**
+     * @param string $url
+     * @return string
+     */
+    private function requestAndCache(string $url): string
+    {
+        if (!Cache::has($url)) {
+            Cache::put($url, $this->request($url), $this->getTTl());
+        }
+
+        return Cache::get($url);
+    }
+
+    /**
+     * @param string $url
+     * @return string
+     */
+    private function request(string $url): string
+    {
+        return $this->client->request('GET', $url)->html();
+    }
 
     /**
      * @param string $url
@@ -38,8 +59,6 @@ class Scrapper
      */
     public function do(string $url, bool $useCache = true): string
     {
-        return Cache::remember($url, $useCache ? $this->getTTl() : 0, function () use ($url) {
-            return $this->client->request('GET', $url)->html();
-        });
+        return $useCache ? $this->requestAndCache($url) : $this->request($url);
     }
 }
