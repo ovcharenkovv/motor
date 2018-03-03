@@ -1,11 +1,12 @@
 <?php
-namespace Parser;
 
-use App\Vsetv\Parser\Channels;
+namespace VseTv;
+
+use App\VseTv\ChannelsParser;
 use FunctionalTester as Tester;
 use Symfony\Component\DomCrawler\Crawler;
 
-class ChannelCest
+class ChannelParserCest
 {
     public function testExtractChannelNameAndId(Tester $I)
     {
@@ -13,7 +14,7 @@ class ChannelCest
 
         $I->assertEquals(
             ["val" => "text"],
-            (new Channels(new Crawler(), $html))->get()
+            (new ChannelsParser(new Crawler(), $html))->get()
         );
     }
 
@@ -23,7 +24,7 @@ class ChannelCest
 
         $I->assertEquals(
             [],
-            (new Channels(new Crawler(), $html))->get()
+            (new ChannelsParser(new Crawler(), $html))->get()
         );
     }
 }

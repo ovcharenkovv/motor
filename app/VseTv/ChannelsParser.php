@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Vsetv\Parser;
+namespace App\VseTv;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-class Channels
+class ChannelsParser
 {
 
     /**
