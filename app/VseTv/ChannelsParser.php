@@ -14,12 +14,9 @@ class ChannelsParser
 
     /**
      * @param Crawler $crawler
-     * @param $html
      */
-    public function __construct(Crawler $crawler, string $html)
+    public function __construct(Crawler $crawler)
     {
-        $crawler->addHtmlContent($html);
-
         $crawler->filterXPath("//select[@name='selected_channel']/option")->each(function ($node) {
             $this->channels[current($node->extract('value'))] = current($node->extract('_text'));
         });
@@ -28,7 +25,7 @@ class ChannelsParser
     /**
      * @return mixed
      */
-    public function get(): array
+    public function getChannels(): array
     {
         return $this->channels;
     }

@@ -12,9 +12,12 @@ class ChannelParserCest
     {
         $html = '<select name="selected_channel"><option value="val">text</option></select>';
 
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($html);
+
         $I->assertEquals(
             ["val" => "text"],
-            (new ChannelsParser(new Crawler(), $html))->get()
+            (new ChannelsParser($crawler))->getChannels()
         );
     }
 
@@ -22,9 +25,12 @@ class ChannelParserCest
     {
         $html = '';
 
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($html);
+
         $I->assertEquals(
             [],
-            (new ChannelsParser(new Crawler(), $html))->get()
+            (new ChannelsParser($crawler))->getChannels()
         );
     }
 }

@@ -54,7 +54,10 @@ class ParseChannels extends Command
     public function handle()
     {
         $html = $this->scrapper->do('http://www.vsetv.com/channels.html');
-        $channels = (new ChannelsParser($this->crawler, $html))->get();
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($html);
+
+        $channels = (new ChannelsParser($crawler))->getChannels();
 
         (new ScrapChannel())->saveChannels($channels);
         (new ScrapChannel())->cleanCopies();
