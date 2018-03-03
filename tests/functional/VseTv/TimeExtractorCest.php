@@ -1,10 +1,10 @@
 <?php
 namespace Parser;
 
-use App\Vsetv\Parser\Time;
+use App\VseTv\TimeExtractor;
 use FunctionalTester as Tester;
 
-class TimeCest
+class TimeExtractorCest
 {
 
     /**
@@ -21,7 +21,7 @@ class TimeCest
     {
         $I->assertEquals(
             $example[0],
-            (new Time('z7'))->parse($example[1])
+            (new TimeExtractor('z7'))->parse($example[1])
         );
     }
 }

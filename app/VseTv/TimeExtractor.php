@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Vsetv\Parser;
+namespace App\VseTv;
 
-class Time
+class TimeExtractor
 {
     private $zero;
 
