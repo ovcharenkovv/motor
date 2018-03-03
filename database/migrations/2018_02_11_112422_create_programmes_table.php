@@ -25,8 +25,7 @@ class CreateProgrammesTable extends Migration
             $table->dateTime('stop');
 
             $table->string('title');
-            $table->string('descr');
-            $table->date('date');
+            $table->string('descr')->default('');
             $table->timestamps();
         });
     }

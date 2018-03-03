@@ -30,7 +30,6 @@ $factory->define(App\Models\Programme::class, function (Faker $faker) {
         'stop' => $faker->dateTime(),
         'title' => $faker->word,
         'descr' => $faker->word,
-        'date' => $faker->date(),
     ];
 });
 
