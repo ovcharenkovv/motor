@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\ScrapChannel;
 use App\Services\Scrapper;
-use App\Vsetv\Parser\Channels as ChannelsParser;
+use App\VseTv\ChannelsParser;
 use Illuminate\Console\Command;
 use Symfony\Component\DomCrawler\Crawler;
 
