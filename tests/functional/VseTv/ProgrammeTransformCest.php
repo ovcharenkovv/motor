@@ -14,6 +14,8 @@ class ProgrammeTransformCest
         $results = [
             '<img src="/pic/o0.gif"><img src="/pic/o8.gif">:<img src="/pic/o0.gif"><img src="/pic/o0.gif">',
             'title',
+            '<img src="/pic/o0.gif"><img src="/pic/o8.gif">:3<img src="/pic/o0.gif">',
+            'title'
         ];
 
         $monday = now()->startOfWeek()->format("Y-m-d");
@@ -23,8 +25,15 @@ class ProgrammeTransformCest
                 'start' => $monday . ' 05:00',
                 'title' => 'title',
                 'channel_id' => 2,
-                'stop' => $monday . ' 05:00'
+                'stop' => $monday . ' 05:30'
             ],
+            [
+                'start' => $monday . ' 05:30',
+                'title' => 'title',
+                'channel_id' => 2,
+                'stop' => $monday . ' 05:30'
+            ]
+
         ];
 
         $I->assertEquals(
@@ -32,6 +41,7 @@ class ProgrammeTransformCest
             (new ProgrammeTransform($results, 'o0', 2))->getProgramme()
         );
     }
+
 
     public function testProgrammeSplitBetweenTwoDays(Tester $I)
     {

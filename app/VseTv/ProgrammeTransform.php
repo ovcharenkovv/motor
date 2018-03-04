@@ -86,10 +86,10 @@ class ProgrammeTransform
         $date = now()->startOfWeek();
 
         foreach ($this->programme as $key => &$item) {
-            $item['start'] = $date->format("Y-m-d ") . $item['start'];
-
             $startTime = Carbon::parse($item['start']);
             $finishTime = Carbon::parse($this->programme[$key + 1]['start'] ?? $item['start']);
+
+            $item['start'] = $date->format("Y-m-d ") . $item['start'];
 
             if ($finishTime->diffInMinutes($startTime) > 200) {
                 $date->addDay();
