@@ -19,7 +19,6 @@
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "~1.0",
     "symfony/thanks": "^1.0",
-    "heroku/heroku-buildpack-php": "^130.0",
 
     "phpunit/phpunit": "~5.0",
     "phpmd/phpmd": "@stable",
