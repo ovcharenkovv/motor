@@ -99,7 +99,7 @@ class ProgrammeParser
             });
 
             if ($this->stopParsing($node, $to)) {
-                return $programme;
+                break;
             }
         }
 
