@@ -21,7 +21,7 @@ script:
   - vendor/bin/phpmd ./app/ text codesize,unusedcode
 #  - php security-checker.phar security:check composer.lock
   - php artisan migrate
-  - vendor/bin/codecept run functional
+  - vendor/bin/codecept run functional --coverage
 
 
 after_script:

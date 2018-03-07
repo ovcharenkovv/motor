@@ -14,3 +14,14 @@ modules:
             environment_file: .env.testing
         - \Helper\Functional
         - \Helper\Factory
+coverage:
+    enabled: true
+    whitelist:
+        include:
+            - ./app/*
+        exclude:
+            - ./app/Console/*
+            - ./app/Providers/*
+            - ./app/Exceptions/*
+            - ./app/Http/Kernel.php
+            - ./app/Console/Kernel.php
