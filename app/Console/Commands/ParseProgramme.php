@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Channel;
 use App\Models\Programme;
 use App\Services\Scrapper;
 use App\VseTv\ProgrammeParser;
@@ -51,6 +52,8 @@ class ParseProgramme extends Command
      */
     public function handle()
     {
+        $channel = Channel::firstOrCreate(['display_name' => 'Sony Sci-Fi']);
+
         $html = $this->scrapper->do('http://www.vsetv.com/schedule_channel_403_week.html', true);
         $crawler = new Crawler();
         $crawler ->addHtmlContent($html);
@@ -59,8 +62,9 @@ class ParseProgramme extends Command
 
         $zero = (string) new ZeroCode($crawler);
 
-        $weekProgramme = (new ProgrammeTransform($parseResult, $zero, 1))->getProgramme();
+        $weekProgramme = (new ProgrammeTransform($parseResult, $zero, $channel->id))->getProgramme();
 
+        Programme::truncate();
         Programme::insert($weekProgramme);
 
         $this->info('Programme has been parsed and saved');
