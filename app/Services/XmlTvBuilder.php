@@ -78,7 +78,7 @@ class XmlTvBuilder
     {
         $programme = $this->dom->createElement('programme');
         $programme->setAttribute("start", $programmeModel->start->format("Ymdhms +0000"));
-        $programme->setAttribute("stop", $programmeModel->stop->format("Ymdhms +0300"));
+        $programme->setAttribute("stop", $programmeModel->stop->format("Ymdhms +0000"));
         $programme->setAttribute("channel", $programmeModel->channel_id);
 
         $title = $this->dom->createElement('title', $programmeModel->title);
