@@ -16,7 +16,7 @@ class HomeController extends Controller
         $channels = Channel::all();
         $xmlBuilder->addChannels($channels);
 
-        return response($xmlBuilder->getXml(), 200, array('content-type' => 'application/octet-stream'));
+        return response(gzencode($xmlBuilder->getXml()), 200, array('content-type' => 'application/octet-stream'));
     }
 
     /**

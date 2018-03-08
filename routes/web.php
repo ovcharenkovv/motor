@@ -16,4 +16,4 @@
 //});
 
 
-Route::get('/xmltv.xml', 'HomeController@index')->name('home');
+Route::get('/xmltv.xml.gz', 'HomeController@index')->name('home');
