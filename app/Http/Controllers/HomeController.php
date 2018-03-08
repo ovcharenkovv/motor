@@ -11,9 +11,12 @@ class HomeController extends Controller
     /**
      * @return string
      */
-    public function index()
+    public function index(XmlTvBuilder $xmlBuilder)
     {
-        return "Hello world";
+        $channels = Channel::all();
+        $xmlBuilder->addChannels($channels);
+
+        return response($xmlBuilder->getXml(), 200, array('content-type' => 'application/octet-stream'));
     }
 
     /**
