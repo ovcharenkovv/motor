@@ -55,13 +55,6 @@ return [
             'visibility' => 'public',
         ],
 
-        'xmltv' => [
-            'driver' => 'local',
-            'root' => base_path('public/xmltv'),
-            'url' => env('APP_URL') . '/xmltv',
-            'visibility' => 'public',
-        ],
-
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

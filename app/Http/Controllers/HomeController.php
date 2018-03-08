@@ -8,10 +8,31 @@ use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
-    public function index(XmlTvBuilder $xmlBuilder)
+    /**
+     * @return string
+     */
+    public function index()
+    {
+        return "Hello world";
+    }
+
+    /**
+     * @param XmlTvBuilder $xmlBuilder
+     */
+    public function update(XmlTvBuilder $xmlBuilder)
     {
         $channels = Channel::all();
         $xmlBuilder->addChannels($channels);
-        Storage::disk('xmltv')->put('xmltv.xml', $xmlBuilder->getXml());
+        Storage::disk('public')->put('xmltv.xml', $xmlBuilder->getXml());
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function xmlTvFile()
+    {
+        $file = Storage::disk('public')->get('xmltv.xml');
+
+        return response($file, 200, array('content-type' => 'application/octet-stream'));
     }
 }

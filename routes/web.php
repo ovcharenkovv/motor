@@ -17,3 +17,7 @@
 
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/update', 'HomeController@update')->name('update');
+
+Route::get('/xmltv.xml', 'HomeController@xmlTvFile')->name('xmlTvFile');
