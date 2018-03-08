@@ -26,7 +26,7 @@ class XmlTvBuilder
     private $dom;
 
     /**
-     * Main facade
+     * Build xml and save in private property
      */
     private function build()
     {
