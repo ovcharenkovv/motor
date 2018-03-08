@@ -77,8 +77,8 @@ class XmlTvBuilder
     private function addProgramme($programmeModel): DOMElement
     {
         $programme = $this->dom->createElement('programme');
-        $programme->setAttribute("start", $programmeModel->start);
-        $programme->setAttribute("stop", $programmeModel->stop);
+        $programme->setAttribute("start", $programmeModel->start->format("Ymdhms +0300"));
+        $programme->setAttribute("stop", $programmeModel->stop->format("Ymdhms +0300"));
         $programme->setAttribute("channel", $programmeModel->channel_id);
 
         $title = $this->dom->createElement('title', $programmeModel->title);
