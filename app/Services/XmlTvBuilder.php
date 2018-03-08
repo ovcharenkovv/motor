@@ -84,6 +84,9 @@ class XmlTvBuilder
         $title = $this->dom->createElement('title', $programmeModel->title);
         $programme->appendChild($title);
 
+        $category = $this->dom->createElement('category');
+        $programme->appendChild($category);
+
         return $programme;
     }
 
@@ -98,6 +101,10 @@ class XmlTvBuilder
 
         $displayName = $this->dom->createElement('display-name', $channelModel->display_name);
         $channel->appendChild($displayName);
+
+        $icon = $this->dom->createElement('icon');
+        $icon->setAttribute("src", "http://www.vsetv.com/pic/channel_logos/403.gif");
+        $channel->appendChild($icon);
 
         return $channel;
     }
