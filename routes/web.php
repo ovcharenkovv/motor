@@ -10,10 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
+Route::get('/health', 'HomeController@healthCheck')->name('health-check');
 
-Route::get('/xmltv.xml.gz', 'HomeController@index')->name('home');
+Route::get('/xmltv.xml.gz', 'HomeController@xmlTvFile')->name('xml-tv-file');
