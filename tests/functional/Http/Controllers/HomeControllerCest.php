@@ -5,10 +5,10 @@ use FunctionalTester;
 
 class HomeControllerCest
 {
-    public function testHomeController(FunctionalTester $I)
+    public function testHealthCheck(FunctionalTester $I)
     {
-        $I->amOnRoute('home');
+        $I->amOnRoute('health-check');
         $I->seeResponseCodeIs(200);
-//        $I->see('Hello world !!!');
+        $I->see('It works!');
     }
 }
