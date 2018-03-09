@@ -93,7 +93,7 @@ class ProgrammeParser
         }
 
         while ($node = $node->nextAll()) {
-            $node->children()->each(function ($node) use (&$programme, $from) {
+            $node->children()->each(function ($node) use (&$programme) {
                 $this->parseTime($programme, $node);
                 $this->parseTitle($programme, $node);
             });
