@@ -25,6 +25,5 @@ coverage:
             - ./app/Exceptions/*
             - ./app/Http/Kernel.php
             - ./app/Console/Kernel.php
-            - ./app/Http/Controllers/Auth/*
             - ./app/Http/Middleware/*
 
