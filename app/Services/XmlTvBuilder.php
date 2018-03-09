@@ -25,7 +25,7 @@ class XmlTvBuilder
     /**
      * @var Collection
      */
-    private $channels;
+    private $channels = [];
 
     /**
      * @var string
@@ -46,13 +46,15 @@ class XmlTvBuilder
         $this->buildHeader($imp);
         $tv = $this->addTv();
 
-        foreach ($this->channels as $channelModel) {
-            $channel = $this->addChannel($channelModel);
-            $tv->appendChild($channel);
+        if (count($this->channels)) {
+            foreach ($this->channels as $channelModel) {
+                $channel = $this->addChannel($channelModel);
+                $tv->appendChild($channel);
 
-            foreach ($channelModel->programmes as $programme) {
-                $programme = $this->addProgramme($programme);
-                $tv->appendChild($programme);
+                foreach ($channelModel->programmes as $programme) {
+                    $programme = $this->addProgramme($programme);
+                    $tv->appendChild($programme);
+                }
             }
         }
 
