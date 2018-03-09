@@ -9,7 +9,19 @@ use Illuminate\Database\Eloquent\Collection;
 
 class XmlTvBuilder
 {
-
+    /**
+     * @var array
+     */
+    private $config = [
+        'header' => [
+            'dtd' => 'xmltv.dtd',
+            'encoding' => 'UTF-8'
+        ],
+        'generator-info' => [
+            'url' => 'http://www.xmltv.org/',
+            'name' => 'Schedules Direct'
+        ]
+    ];
     /**
      * @var Collection
      */
@@ -53,9 +65,9 @@ class XmlTvBuilder
      */
     private function buildHeader(DOMImplementation $imp)
     {
-        $dtd = $imp->createDocumentType('tv', '', 'xmltv.dtd');
+        $dtd = $imp->createDocumentType('tv', '', data_get($this->config, 'header.dtd'));
         $this->dom = $imp->createDocument("", "", $dtd);
-        $this->dom->encoding = 'UTF-8';
+        $this->dom->encoding = data_get($this->config, 'header.encoding');
     }
 
     /**
@@ -64,8 +76,8 @@ class XmlTvBuilder
     private function addTv(): DOMElement
     {
         $tv = $this->dom->createElement('tv');
-        $tv->setAttribute('generator-info-url', "http://www.xmltv.org/");
-        $tv->setAttribute('generator-info-name', "Schedules Direct");
+        $tv->setAttribute('generator-info-url', data_get($this->config, 'generator-info.url'));
+        $tv->setAttribute('generator-info-name', data_get($this->config, 'generator-info.name'));
 
         return $tv;
     }
@@ -77,8 +89,8 @@ class XmlTvBuilder
     private function addProgramme($programmeModel): DOMElement
     {
         $programme = $this->dom->createElement('programme');
-        $programme->setAttribute("start", $programmeModel->start->format("YmdHis +0200"));
-        $programme->setAttribute("stop", $programmeModel->stop->format("YmdHis +0200"));
+        $programme->setAttribute("start", $programmeModel->start->format("YmdHis +0300"));
+        $programme->setAttribute("stop", $programmeModel->stop->format("YmdHis +0300"));
         $programme->setAttribute("channel", $programmeModel->channel_id);
 
         $title = $this->dom->createElement('title', $programmeModel->title);
@@ -103,7 +115,7 @@ class XmlTvBuilder
         $channel->appendChild($displayName);
 
         $icon = $this->dom->createElement('icon');
-        $icon->setAttribute("src", "http://www.vsetv.com/pic/channel_logos/403.gif");
+        $icon->setAttribute("src", $channelModel->icon_src);
         $channel->appendChild($icon);
 
         return $channel;
