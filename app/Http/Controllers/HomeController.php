@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Channel;
 use App\Services\XmlTvBuilder;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function xmlTvFile(XmlTvBuilder $xmlBuilder)
     {
+        Artisan::call('parse:channels');
+
         $xmlBuilder->addChannels(Channel::all());
 
         return response(
