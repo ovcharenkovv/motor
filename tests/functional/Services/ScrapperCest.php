@@ -7,8 +7,7 @@ use FunctionalTester as Tester;
 use \Mockery as m;
 use Goutte\Client;
 
-
-class ProgrammeCest
+class ScrapperCest
 {
 
     public function _before()
