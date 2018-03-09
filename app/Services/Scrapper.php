@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Goutte\Client;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Carbon;
 
 class Scrapper
 {
@@ -13,9 +14,9 @@ class Scrapper
     private $client;
 
     /**
-     * @return static
+     * @return Carbon
      */
-    private function getTTl()
+    private function getTTl() : Carbon
     {
         return now()->endOfWeek();
     }
@@ -32,9 +33,9 @@ class Scrapper
 
     /**
      * @param string $url
-     * @return string
+     * @return mixed
      */
-    private function requestAndCache(string $url): string
+    private function requestAndCache(string $url)
     {
         if (!Cache::has($url)) {
             Cache::put($url, $this->request($url), $this->getTTl());
