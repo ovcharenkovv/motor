@@ -10,7 +10,7 @@ build:
     tests:
         override:
             -
-                command: 'vendor/bin/codecept run functional --coverage=some-file'
+                command: 'vendor/bin/codecept run functional --coverage --coverage-xmle'
                 coverage:
-                    file: 'some-file'
-                    format: 'clover'
+                    file: './_output/coverage.xml'
+                    format: 'xml'
