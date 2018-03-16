@@ -41,7 +41,7 @@ class Scrapper
             Cache::put($url, $this->request($url), $this->getTTl());
         }
 
-        return Cache::get($url);
+        return (string) Cache::get($url);
     }
 
     /**
