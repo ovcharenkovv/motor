@@ -12,5 +12,5 @@ build:
             -
                 command: 'vendor/bin/codecept run functional --coverage --coverage-xml'
                 coverage:
-                    file: './_output/coverage.xml'
+                    file: 'tests/_output/coverage.xml'
                     format: 'clover'
