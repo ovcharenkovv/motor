@@ -1,8 +1,16 @@
 build:
-        dependencies:
-            before:
-                - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS scrutinizer"
-                - sed -i -e 's/DB_DATABASE=motor/DB_DATABASE=scrutinizer/g' .env.testing
-                - sed -i -e 's/DB_PASSWORD=123456/DB_PASSWORD=/g' .env.testing
-                - php artisan migrate:install
-                - php artisan migrate
+    dependencies:
+        before:
+            - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS scrutinizer"
+            - sed -i -e 's/DB_DATABASE=motor/DB_DATABASE=scrutinizer/g' .env.testing
+            - sed -i -e 's/DB_PASSWORD=123456/DB_PASSWORD=/g' .env.testing
+            - php artisan migrate:install
+            - php artisan migrate
+
+    tests:
+        override:
+            -
+                command: 'vendor/bin/codecept run functional --coverage=some-file'
+                coverage:
+                    file: 'some-file'
+                    format: 'clover'
