@@ -33,9 +33,9 @@ class Scrapper
 
     /**
      * @param string $url
-     * @return mixed
+     * @return string
      */
-    private function requestAndCache(string $url)
+    private function requestAndCache(string $url): string
     {
         if (!Cache::has($url)) {
             Cache::put($url, $this->request($url), $this->getTTl());
