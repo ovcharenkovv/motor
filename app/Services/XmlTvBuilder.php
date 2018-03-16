@@ -13,14 +13,10 @@ class XmlTvBuilder
      * @var array
      */
     private $config = [
-        'header' => [
-            'dtd' => 'xmltv.dtd',
-            'encoding' => 'UTF-8'
-        ],
-        'generator-info' => [
-            'url' => 'http://www.xmltv.org/',
-            'name' => 'Schedules Direct'
-        ]
+        'header-dtd' => 'xmltv.dtd',
+        'header-encoding' => 'UTF-8',
+        'generator-info-url' => 'http://www.xmltv.org/',
+        'generator-info-name' => 'Schedules Direct'
     ];
     /**
      * @var Collection
@@ -67,9 +63,9 @@ class XmlTvBuilder
      */
     private function buildHeader(DOMImplementation $imp)
     {
-        $dtd = $imp->createDocumentType('tv', '', data_get($this->config, 'header.dtd'));
+        $dtd = $imp->createDocumentType('tv', '', $this->config['header-dtd']);
         $this->dom = $imp->createDocument("", "", $dtd);
-        $this->dom->encoding = data_get($this->config, 'header.encoding');
+        $this->dom->encoding = $this->config['header-encoding'];
     }
 
     /**
@@ -78,8 +74,8 @@ class XmlTvBuilder
     private function addTv(): DOMElement
     {
         $tv = $this->dom->createElement('tv');
-        $tv->setAttribute('generator-info-url', data_get($this->config, 'generator-info.url'));
-        $tv->setAttribute('generator-info-name', data_get($this->config, 'generator-info.name'));
+        $tv->setAttribute('generator-info-url', $this->config['generator-info-url']);
+        $tv->setAttribute('generator-info-name', $this->config['generator-info-name']);
 
         return $tv;
     }
