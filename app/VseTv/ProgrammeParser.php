@@ -92,15 +92,11 @@ class ProgrammeParser
             return $programme;
         }
 
-        while ($node = $node->nextAll()) {
+        while (($node = $node->nextAll()) && !$this->stopParsing($node, $to)) {
             $node->children()->each(function ($node) use (&$programme) {
                 $this->parseTime($programme, $node);
                 $this->parseTitle($programme, $node);
             });
-
-            if ($this->stopParsing($node, $to)) {
-                break;
-            }
         }
 
         return $programme;
